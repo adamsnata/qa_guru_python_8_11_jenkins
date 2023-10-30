@@ -1,5 +1,5 @@
 import allure
-from selene import have
+from selene import have, browser
 from allure_commons.types import Severity
 
 from qa_quru_python_8_11_jenkins.pages.registration_page import RegistrationPage
@@ -15,6 +15,8 @@ def test_Positive_Student_Registration_Form():
     # WHEN
     with allure.step("Открываем форму"):
         registration_page.open()
+        browser.execute_script('document.querySelector("#fixedban").remove()')
+        browser.element('footer').execute_script('element.remove()')
 
     with allure.step("Заполняем Имя"):
         registration_page.type_first_name("Aleksei")
